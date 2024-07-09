@@ -76,6 +76,7 @@ class MedicalImageDataset(Dataset):
         ct_scan = pad_image_to_depth(ct_scan, self.max_depth)
         full_seg = pad_image_to_depth(full_seg, self.max_depth)
 
+        # Only use Pancreas and Tumor segmentation labels, exclude if using all labels
         full_seg = np.where((full_seg == 8) | (full_seg == 10), full_seg, 0)
         
         combined = np.stack([ct_scan, full_seg], axis=0)
