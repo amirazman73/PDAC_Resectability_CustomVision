@@ -8,13 +8,13 @@ from Data.data_loader import load_labels, setup_dir
 from Data.utils import find_max_bounding_box_edges
 
 
-raw_ct_dir = r'.../GitHub/PDAC_Resectability_CustomVision/Data/...'
-seg_dir = r'.../GitHub/PDAC_Resectability_CustomVision/Data/...'
-label_dir = r'.../GitHub/PDAC_Resectability_CustomVision/Data/...'
+raw_ct_dir = r'.../GitHub/PDAC_Resectability_CustomVision/Data/files'
+seg_dir = r'.../GitHub/PDAC_Resectability_CustomVision/Data/files'
+label_dir = r'.../GitHub/PDAC_Resectability_CustomVision/Data/files'
 
 
 labels_df = load_labels(label_dir)
-seg_dir = setup_dir(seg_dir, raw_ct_dir=raw_ct_dir, segmentations_dir='segmentations')
+seg_dir = setup_dir(seg_dir, raw_ct_dir=raw_ct_dir, segmentations_dir=seg_dir)
 
 train_data, test_data = train_test_split(labels_df, test_size=0.1, random_state=42)
 
